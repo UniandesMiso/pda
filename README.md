@@ -5,24 +5,24 @@
 Este proyecto consta de dos microservicios y sigue una arquitectura hexagonal como se explica a continuación:
 
 * src
-  * contracts: Esta carpeta contiene el microservicio de gestión contractual
-  		* api: Esta carpeta contiene la definición de los endpoints expuestos por el microservicio
-  		* config: Esta carpeta tiene la configuración del microservicio como ambiente de ejecución, URL de conexión a la base de datos, etc.
-  		* modules: Esta carpeta contiene los módulos del microservicio
-   			* sales: Esta carpeta contiene el módulo de ventas
-    				* application: Esta carpeta contiene la lógica del módulo (casos de uso) que implementa las reglas de negocio de la aplicación y coordina las interacciones entre los diferentes componentes.
-    				* domain: Esta carpeta contiene la lógica del dominio del módulo, incluyendo las entidades, objetos de valor, servicios del dominio, etc.
-    				* infrastructure: Esta carpeta contiene las implementaciones concretas de los componentes, externos, como repositorios a bases de datos.
-  		* seedwork: Esta carpeta contiene componentes reutilizables y genéricos que pueden ser compartidos entre diferentes partes de la aplicación.
-  * properties: Esta carpeta contiene el microservicio de propiedades
-  		* api: Esta carpeta contiene la definición de los endpoints expuestos por el microservicio
-  		* config: Esta carpeta tiene la configuración del microservicio como ambiente de ejecución, URL de conexión a la base de datos, etc.
-  		* modules: Esta carpeta contiene los módulos del microservicio
-   			* sales: Esta carpeta contiene el módulo de ventas
-    				* application: Esta carpeta contiene la lógica del módulo (casos de uso) que implementa las reglas de negocio de la aplicación y coordina las interacciones entre los diferentes componentes.
-    				* domain: Esta carpeta contiene la lógica del dominio del módulo, incluyendo las entidades, objetos de valor, servicios del dominio, etc.
-    				* infrastructure: Esta carpeta contiene las implementaciones concretas de los componentes, externos, como repositorios a bases de datos.
-  		* seedwork: Esta carpeta contiene componentes reutilizables y genéricos que pueden ser compartidos entre diferentes partes de la aplicación.
+ 	* contracts: Esta carpeta contiene el microservicio de gestión contractual
+		* api: Esta carpeta contiene la definición de los endpoints expuestos por el microservicio
+		* config: Esta carpeta tiene la configuración del microservicio como ambiente de ejecución, URL de conexión a la base de datos, etc.
+		* modules: Esta carpeta contiene los módulos del microservicio
+			* sales: Esta carpeta contiene el módulo de ventas
+				* application: Esta carpeta contiene la lógica del módulo (casos de uso) que implementa las reglas de negocio de la aplicación y coordina las interacciones entre los diferentes componentes.
+				* domain: Esta carpeta contiene la lógica del dominio del módulo, incluyendo las entidades, objetos de valor, servicios del dominio, etc.
+				* infrastructure: Esta carpeta contiene las implementaciones concretas de los componentes, externos, como repositorios a bases de datos.
+		* seedwork: Esta carpeta contiene componentes reutilizables y genéricos que pueden ser compartidos entre diferentes partes de la aplicación.
+ 	* properties: Esta carpeta contiene el microservicio de propiedades
+		* api: Esta carpeta contiene la definición de los endpoints expuestos por el microservicio
+		* config: Esta carpeta tiene la configuración del microservicio como ambiente de ejecución, URL de conexión a la base de datos, etc.
+		* modules: Esta carpeta contiene los módulos del microservicio
+			* sales: Esta carpeta contiene el módulo de ventas
+				* application: Esta carpeta contiene la lógica del módulo (casos de uso) que implementa las reglas de negocio de la aplicación y coordina las interacciones entre los diferentes componentes.
+				* domain: Esta carpeta contiene la lógica del dominio del módulo, incluyendo las entidades, objetos de valor, servicios del dominio, etc.
+				* infrastructure: Esta carpeta contiene las implementaciones concretas de los componentes, externos, como repositorios a bases de datos.
+		* seedwork: Esta carpeta contiene componentes reutilizables y genéricos que pueden ser compartidos entre diferentes partes de la aplicación.
 
 ## Despliegue
 
