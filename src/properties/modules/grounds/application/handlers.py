@@ -8,5 +8,4 @@ class GroundsHandler(Handler):
     @staticmethod
     def handle_sale_registered(event):
         command = UpdateGroundStatus(id="1234")
-        result = execute_command(command)
-        print("command executed:", result.data)
+        execute_command(command)

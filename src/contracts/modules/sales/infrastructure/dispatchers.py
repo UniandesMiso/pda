@@ -1,4 +1,3 @@
-from datetime import datetime
 from pulsar import Client
 from pulsar.schema import AvroSchema
 
@@ -23,6 +22,4 @@ class Dispatcher:
         )
 
         message = SaleRegisteredEvent(data=payload)
-        # print(message)
-        # print(message.data)
         self._send_message(topic, message, AvroSchema(SaleRegisteredEvent))
