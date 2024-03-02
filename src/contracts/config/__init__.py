@@ -1,6 +1,4 @@
-from os import environ, path
-
-basedir = path.abspath(path.dirname(__file__))
+from os import environ
 
 
 class Config(object):
@@ -19,7 +17,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{path.join(basedir, "db.sqlite")}"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
 
 
 config = {

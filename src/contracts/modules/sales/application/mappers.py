@@ -1,3 +1,4 @@
+from uuid import UUID
 from datetime import datetime
 
 from contracts.seedwork.application.dto import Mapper as ApplicationMapper
@@ -12,6 +13,7 @@ class SaleMapperDTO(ApplicationMapper):
     def dict_2_dto(self, dict: dict) -> SaleDTO:
         sale_dto = SaleDTO(
             id=dict.get("id"),
+            propertyId=dict.get("propertyId"),
             createdAt=dict.get("createdAt"),
             updatedAt=dict.get("updatedAt"),
             price=dict.get("price"),
@@ -32,6 +34,7 @@ class SaleMapper(RepositoryMapper):
     def entity_2_dto(self, entity: Sale) -> SaleDTO:
         sale_dto = SaleDTO(
             id=entity.id,
+            propertyId=entity.property_id,
             createdAt=entity.created_at.strftime("%d/%m/%Y %I:%M %p"),
             updatedAt=entity.updated_at.strftime("%d/%m/%Y %I:%M %p"),
             price=entity.amount.price,
@@ -42,6 +45,8 @@ class SaleMapper(RepositoryMapper):
 
     def dto_2_entity(self, dto: SaleDTO) -> Sale:
         sale = Sale()
+        sale.id = UUID(dto.id)
+        sale.property_id = dto.propertyId
         sale.amount = Amount(price=dto.price, currency=dto.currency)
         sale.executed_at = datetime.strptime(dto.executedAt, "%d/%m/%Y")
         return sale

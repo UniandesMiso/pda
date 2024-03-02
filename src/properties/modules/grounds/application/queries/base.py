@@ -1,8 +1,8 @@
-from properties.seedwork.application.commands import CommandHandler
+from properties.seedwork.application.queries import QueryHandler
 from properties.modules.grounds.infrastructure.repositories import GroundRepositorySQL
 
 
-class BaseCommandHandler(CommandHandler):
+class BaseQueryHandler(QueryHandler):
 
     def __init__(self):
         self._repository = GroundRepositorySQL()

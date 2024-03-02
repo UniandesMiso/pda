@@ -18,8 +18,8 @@ def subscribe_2_events():
     while True:
         message = consumer.receive()
         try:
+            consumer.acknowledge(message)
             event = message.value()
             dispatcher.send(event=event, signal=type(event).__name__)
-            consumer.acknowledge(message)
         except:
             consumer.negative_acknowledge(message)

@@ -1,3 +1,4 @@
+from uuid import uuid4
 from dataclasses import dataclass
 from pydispatch import dispatcher
 
@@ -10,6 +11,7 @@ from contracts.modules.sales.application.commands.base import BaseCommandHandler
 
 @dataclass
 class RegisterSale(Command):
+    property_id: str
     price: float
     currency: str
     executed_at: str
@@ -19,6 +21,8 @@ class RegisterSaleHandler(BaseCommandHandler):
 
     def handle(self, command: RegisterSale) -> CommandResult:
         contract_dto = SaleDTO(
+            id=str(uuid4()),
+            propertyId=command.property_id,
             price=command.price,
             currency=command.currency,
             executedAt=command.executed_at,

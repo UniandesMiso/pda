@@ -1,6 +1,4 @@
-from os import environ, path
-
-basedir = path.abspath(path.dirname(__file__))
+from os import environ
 
 
 class Config(object):
@@ -11,15 +9,15 @@ class Config(object):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = (
         "postgresql+psycopg2://"
-        + f"{environ.get('DB_USER')}:{environ.get('DB_PASS')}@"
-        + f"{environ.get('DB_HOST')}:{environ.get('DB_PORT')}/"
-        + f"{environ.get('DB_NAME')}"
+        + f"{environ.get('DB_USER', 'postgres')}:{environ.get('DB_PASS', 'postgres')}@"
+        + f"{environ.get('DB_HOST', 'localhost')}:{environ.get('DB_PORT', '5432')}/"
+        + f"{environ.get('DB_NAME', 'pda')}"
     )
 
 
 class DevelopmentConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{path.join(basedir, "db.sqlite")}"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite"
 
 
 config = {

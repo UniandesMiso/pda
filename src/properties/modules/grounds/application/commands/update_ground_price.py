@@ -7,14 +7,20 @@ from properties.modules.grounds.application.commands.base import BaseCommandHand
 
 
 @dataclass
-class UpdateGroundStatus(Command):
+class UpdateGroundPrice(Command):
     id: str
+    price: float
+    currency: str
 
 
-class UpdateGroundStatusHandler(BaseCommandHandler):
+class UpdateGroundPriceHandler(BaseCommandHandler):
 
-    def handle(self, command: UpdateGroundStatus) -> CommandResult:
-        ground_dto = GroundDTO(id=command.id, status="SOLD")
+    def handle(self, command: UpdateGroundPrice) -> CommandResult:
+        ground_dto = GroundDTO(
+            id=command.id,
+            price=command.price,
+            currency=command.currency
+        )
 
         mapper = GroundMapper()
         ground = mapper.dto_2_entity(ground_dto)
@@ -23,7 +29,7 @@ class UpdateGroundStatusHandler(BaseCommandHandler):
         return CommandResult(data=mapper.entity_2_dto(ground))
 
 
-@command.register(UpdateGroundStatus)
-def execute_update_ground_status(command: UpdateGroundStatus):
-    handler = UpdateGroundStatusHandler()
+@command.register(UpdateGroundPrice)
+def execute_update_ground_status(command: UpdateGroundPrice):
+    handler = UpdateGroundPriceHandler()
     return handler.handle(command)

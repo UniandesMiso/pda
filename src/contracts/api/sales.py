@@ -16,6 +16,7 @@ def register_sale():
     sale_dto = mapper.dict_2_dto(request.json)
 
     command = RegisterSale(
+        property_id=sale_dto.propertyId,
         price=sale_dto.price,
         currency=sale_dto.currency,
         executed_at=sale_dto.executedAt,

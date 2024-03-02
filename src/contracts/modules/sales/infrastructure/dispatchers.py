@@ -2,10 +2,13 @@ from pulsar import Client
 from pulsar.schema import AvroSchema
 
 from contracts.seedwork.infrastructure.utils import get_pulsar_url
-from contracts.modules.sales.infrastructure.schema.v1.events import SaleRegisteredEvent, SaleRegisteredPayload
+from contracts.modules.sales.infrastructure.factories import FactoryEvents
 
 
 class Dispatcher:
+
+    def __init__(self):
+        self.factory = FactoryEvents()
 
     def _send_message(self, topic, message, schema):
         client = Client(get_pulsar_url())
@@ -14,12 +17,5 @@ class Dispatcher:
         client.close()
 
     def send_event(self, topic, event):
-        payload = SaleRegisteredPayload(
-            sale_id=str(event.id),
-            price=event.price,
-            currency=event.currency,
-            executed_at=int(event.executed_at.timestamp())
-        )
-
-        message = SaleRegisteredEvent(data=payload)
-        self._send_message(topic, message, AvroSchema(SaleRegisteredEvent))
+        message = self.factory.create_object(event)
+        self._send_message(topic, message, AvroSchema(type(message)))

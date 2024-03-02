@@ -1,4 +1,4 @@
-from os import environ, path
+from os import environ
 from time import time
 
 
@@ -15,7 +15,7 @@ def get_pulsar_url():
 def get_database_url():
     return (
         "postgresql+psycopg2://"
-        + f"{environ.get('DB_USER')}:{environ.get('DB_PASS')}@"
-        + f"{environ.get('DB_HOST')}:{environ.get('DB_PORT')}/"
-        + f"{environ.get('DB_NAME')}"
+        + f"{environ.get('DB_USER', 'postgres')}:{environ.get('DB_PASS', 'postgres')}@"
+        + f"{environ.get('DB_HOST', 'localhost')}:{environ.get('DB_PORT', '5432')}/"
+        + f"{environ.get('DB_NAME', 'pda')}"
     )

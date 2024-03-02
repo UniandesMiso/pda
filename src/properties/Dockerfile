@@ -9,4 +9,4 @@ COPY . ./properties
 RUN pip install -r ./properties/requirements.txt
 
 EXPOSE 3000
-CMD ["flask", "-A", "./properties/api", "run", "-h", "0.0.0.0", "-p", "3001"]
+CMD ["flask", "-A", "./properties/api", "run", "-h", "0.0.0.0", "-p", "3000"]

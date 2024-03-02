@@ -1,3 +1,4 @@
+from uuid import UUID
 from abc import ABC, abstractmethod
 
 from properties.seedwork.domain.entities import Entity
@@ -6,7 +7,13 @@ from properties.seedwork.domain.entities import Entity
 class Repository(ABC):
 
     @abstractmethod
+    def create(self, entity: Entity): ...
+
+    @abstractmethod
     def update(self, entity: Entity): ...
+
+    @abstractmethod
+    def get_by_id(self, id: UUID) -> Entity: ...
 
 
 class Mapper(ABC):

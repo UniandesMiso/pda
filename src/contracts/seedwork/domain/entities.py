@@ -8,18 +8,9 @@ from contracts.seedwork.domain.value_objects import Amount
 
 @dataclass
 class Entity:
-    id: UUID = field(hash=True)
-    _id: UUID = field(init=False, repr=False, hash=True)
+    id: UUID = field(hash=True, default=uuid4())
     created_at: datetime = field(default=datetime.now())
     updated_at: datetime = field(default=datetime.now())
-
-    @property
-    def id(self):
-        return self._id
-
-    @id.setter
-    def id(self, id: UUID) -> None:
-        self._id = uuid4()
 
 
 @dataclass
@@ -35,4 +26,5 @@ class Root(Entity):
 
 @dataclass
 class Contract(Root):
+    property_id: str = field(default_factory=str)
     amount: Amount = field(default_factory=Amount)

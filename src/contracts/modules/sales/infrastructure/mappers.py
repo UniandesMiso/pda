@@ -12,6 +12,7 @@ class SaleMapper(Mapper):
     def entity_2_dto(self, entity: Sale) -> SaleDTO:
         sale_dto = SaleDTO()
         sale_dto.id = str(entity.id)
+        sale_dto.property_id = entity.property_id
         sale_dto.created_at = entity.created_at
         sale_dto.updated_at = entity.updated_at
         sale_dto.price = entity.amount.price
@@ -22,6 +23,7 @@ class SaleMapper(Mapper):
     def dto_2_entity(self, dto: SaleDTO) -> Sale:
         sale = Sale()
         sale.id = dto.price
+        sale.property_id = dto.property_id
         sale.created_at = dto.created_at
         sale.updated_at = dto.updated_at
         sale.amount = Amount(price=dto.price, currency=dto.currency)

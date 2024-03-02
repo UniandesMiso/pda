@@ -8,5 +8,5 @@ ENV FLASK_CONFIG=production
 COPY . ./contracts
 RUN pip install -r ./contracts/requirements.txt
 
-EXPOSE 3000
-CMD ["flask", "-A", "./contracts/api", "run", "-h", "0.0.0.0", "-p", "3000"]
+EXPOSE 3001
+CMD ["flask", "-A", "./contracts/api", "run", "-h", "0.0.0.0", "-p", "3001"]
