@@ -11,7 +11,7 @@ import properties.modules.grounds.infrastructure.consumers as grounds_consumer
 
 
 def create_app():
-    config_name = environ.get("FLASK_CONFIG", "production")
+    config_name = environ.get("FLASK_CONFIG", "development")
 
     app = Flask(__name__)
     app.config.from_object(config[config_name])

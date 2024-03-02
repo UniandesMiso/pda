@@ -9,9 +9,9 @@ class Config(object):
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = (
         "postgresql+psycopg2://"
-        + f"{environ.get('DB_USER', 'postgres')}:{environ.get('DB_PASS', 'postgres')}@"
-        + f"{environ.get('DB_HOST', 'localhost')}:{environ.get('DB_PORT', '5432')}/"
-        + f"{environ.get('DB_NAME', 'pda')}"
+        + f"{environ.get('DB_USER')}:{environ.get('DB_PASS')}@"
+        + f"{environ.get('DB_HOST')}:{environ.get('DB_PORT')}/"
+        + f"{environ.get('DB_NAME')}"
     )
 
 
