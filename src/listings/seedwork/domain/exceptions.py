@@ -1,6 +1,6 @@
 from werkzeug.exceptions import HTTPException
 
-from contracts.seedwork.domain.rules import BusinessRule
+from listings.seedwork.domain.rules import BusinessRule
 
 
 class DomainException(HTTPException): ...
