@@ -5,7 +5,7 @@ from werkzeug.exceptions import HTTPException
 
 from listings.config import config
 from listings.config.db import init_db
-from listings.api.listings import bp as listings_bp
+from listings.api.information import bp as listings_bp
 
 import listings.modules.listings.infrastructure.consumers as sales_consumer
 

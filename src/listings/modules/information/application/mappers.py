@@ -4,8 +4,8 @@ from datetime import datetime
 from listings.seedwork.application.dto import Mapper as ApplicationMapper
 from listings.seedwork.domain.repositories import Mapper as RepositoryMapper
 from listings.seedwork.domain.entities import Amount
-from listings.modules.listings.application.dto import ListingDTO, PropertyDTO
-from listings.modules.listings.domain.entities import Listing
+from listings.modules.information.application.dto import ListingDTO, PropertyDTO
+from listings.modules.information.domain.entities import Listing
 
 
 class ListingMapperDTO(ApplicationMapper):

@@ -5,9 +5,9 @@ from typing import List
 
 from listings.config.db import db
 from listings.seedwork.application.commands import Command, CommandResult, execute_command as command
-from listings.modules.listings.application.dto import ListingDTO, PropertyDTO
-from listings.modules.listings.application.mappers import ListingMapper
-from listings.modules.listings.application.commands.base import BaseCommandHandler
+from listings.modules.information.application.dto import ListingDTO, PropertyDTO
+from listings.modules.information.application.mappers import ListingMapper
+from listings.modules.information.application.commands.base import BaseCommandHandler
 
 @dataclass
 class ListingProperty:
@@ -16,13 +16,13 @@ class ListingProperty:
     length: str
 
 @dataclass
-class ProcessListing(Command):
+class ProcessInformation(Command):
     properties: List[ListingProperty]
     executed_at: str
 
-class ProcessListingHandler(BaseCommandHandler):
+class ProcessInformationHandler(BaseCommandHandler):
 
-    def handle(self, command: ProcessListing) -> CommandResult:
+    def handle(self, command: ProcessInformation) -> CommandResult:
         properties = []
         for property_data in command.properties:
             property_dto = PropertyDTO(
@@ -48,7 +48,7 @@ class ProcessListingHandler(BaseCommandHandler):
 
         return CommandResult(data=mapper.entity_2_dto(listing))
 
-@command.register(ProcessListing)
-def execute_register_sale(command: ProcessListing):
-    handler = ProcessListingHandler()
+@command.register(ProcessInformation)
+def execute_register_sale(command: ProcessInformation):
+    handler = ProcessInformationHandler()
     return handler.handle(command)

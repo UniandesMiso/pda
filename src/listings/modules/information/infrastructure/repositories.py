@@ -2,11 +2,11 @@ from uuid import UUID
 from datetime import datetime
 
 from listings.config.db import db
-from listings.modules.listings.domain.entities import Sale
-from listings.modules.listings.domain.repositories import SaleRepository
-from listings.modules.listings.domain.rules import PriceRequired
-from listings.modules.listings.infrastructure.mappers import SaleMapper
-from listings.modules.listings.infrastructure.dto import Sale as SaleDTO
+from listings.modules.information.domain.entities import Sale
+from listings.modules.information.domain.repositories import SaleRepository
+from listings.modules.information.domain.rules import PriceRequired
+from listings.modules.information.infrastructure.mappers import SaleMapper
+from listings.modules.information.infrastructure.dto import Sale as SaleDTO
 
 
 class SaleRepositoryGeneric(SaleRepository):

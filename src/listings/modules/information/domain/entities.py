@@ -3,7 +3,7 @@ from dataclasses import dataclass, field
 
 from listings.seedwork.domain.entities import Contract
 from listings.seedwork.domain.mixins import ValidateRules
-from listings.modules.listings.domain.events import PropertyProcessed
+from listings.modules.information.domain.events import PropertyProcessed
 
 
 @dataclass
