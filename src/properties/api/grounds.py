@@ -17,11 +17,7 @@ def register_ground():
 
     command = RegisterGround(
         address=ground_dto.address,
-        width=ground_dto.width,
-        length=ground_dto.length,
         location=ground_dto.location,
-        price=ground_dto.price,
-        currency=ground_dto.currency
     )
 
     result = execute_command(command)

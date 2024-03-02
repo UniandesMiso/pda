@@ -39,8 +39,8 @@ services:
                --cluster cluster-a \
                --zookeeper zookeeper:2181 \
                --configuration-store zookeeper:2181 \
-               --web-service-url http://broker:8080 \
-               --broker-service-url pulsar://broker:6650
+               --web-service-url http://127.0.0.1:8080 \
+               --broker-service-url pulsar://127.0.0.1:6650
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -78,7 +78,7 @@ services:
       - managedLedgerDefaultWriteQuorum=1
       - managedLedgerDefaultAckQuorum=1
       - advertisedAddress=broker
-      - advertisedListeners=external:pulsar://broker:6650
+      - advertisedListeners=external:pulsar://127.0.0.1:6650
     networks:
       - pulsar
     ports:
@@ -92,10 +92,11 @@ services:
         condition: service_started
 
   db:
-    profiles: ['properties', 'contracts']
+    profiles: ['db']
     container_name: postgres
     image: postgres:16-alpine
     environment:
+      PGUSER: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: pda

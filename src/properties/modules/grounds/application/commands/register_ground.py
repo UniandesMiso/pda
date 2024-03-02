@@ -11,12 +11,7 @@ from properties.modules.grounds.application.commands.base import BaseCommandHand
 @dataclass
 class RegisterGround(Command):
     address: str
-    width: float
-    length: float
     location: str
-    price: float
-    currency: str
-
 
 class RegisterGroundHandler(BaseCommandHandler):
 
@@ -24,11 +19,7 @@ class RegisterGroundHandler(BaseCommandHandler):
         ground_dto = GroundDTO(
             id=str(uuid4()),
             address=command.address,
-            width=command.width,
-            length=command.length,
             location=command.location,
-            price=command.price,
-            currency=command.currency
         )
 
         mapper = GroundMapper()
