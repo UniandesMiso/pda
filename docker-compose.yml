@@ -159,25 +159,25 @@ services:
       db:
         condition: service_healthy
 
-  listings:
-    profiles: ['listings']
-    container_name: listings
-    image: listings
-    build: ./src/listings
-    restart: on-failure
-    environment:
-      DB_USER: postgres
-      DB_PASS: postgres
-      DB_HOST: db
-      DB_PORT: 5432
-      DB_NAME: pda
-      BROKER_HOST: broker
-      BROKER_PORT: 6650
-    networks:
-      - app
-      - pulsar
-    ports:
-      - "3002:3002"
-    depends_on:
-      db:
-        condition: service_healthy
+  # listings:
+  #   profiles: ['listings']
+  #   container_name: listings
+  #   image: listings
+  #   build: ./src/listings
+  #   restart: on-failure
+  #   environment:
+  #     DB_USER: postgres
+  #     DB_PASS: postgres
+  #     DB_HOST: db
+  #     DB_PORT: 5432
+  #     DB_NAME: pda
+  #     BROKER_HOST: broker
+  #     BROKER_PORT: 6650
+  #   networks:
+  #     - app
+  #     - pulsar
+  #   ports:
+  #     - "3002:3002"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
