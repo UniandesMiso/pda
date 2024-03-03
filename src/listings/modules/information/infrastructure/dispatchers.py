@@ -1,8 +1,8 @@
 from pulsar import Client
 from pulsar.schema import AvroSchema
 
-from contracts.seedwork.infrastructure.utils import get_pulsar_url
-from contracts.modules.sales.infrastructure.factories import FactoryEvents
+from listings.seedwork.infrastructure.utils import get_pulsar_url
+from listings.modules.information.infrastructure.factories import FactoryEvents
 
 
 class Dispatcher:

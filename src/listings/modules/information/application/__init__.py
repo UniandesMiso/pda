@@ -1,7 +1,7 @@
 from pydispatch import dispatcher
 
-from listings.modules.information.application.handlers import SalesHandler
-from listings.modules.information.domain.events import SaleRegistered
+from listings.modules.information.application.handlers import InformationHandler
+from listings.modules.information.domain.events import PropertyProcessed
 
 
-dispatcher.connect(SalesHandler.handle_sale_registered, signal=SaleRegistered.__name__)
+dispatcher.connect(InformationHandler.handle_property_processed, signal=PropertyProcessed.__name__)

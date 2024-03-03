@@ -5,7 +5,7 @@ from listings.config.db import db
 from listings.modules.information.domain.entities import Sale
 from listings.modules.information.domain.repositories import SaleRepository
 from listings.modules.information.domain.rules import PriceRequired
-from listings.modules.information.infrastructure.mappers import SaleMapper
+from listings.modules.listings.infrastructure.mappers import SaleMapper
 from listings.modules.information.infrastructure.dto import Sale as SaleDTO
 
 

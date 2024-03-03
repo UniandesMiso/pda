@@ -1,3 +1,4 @@
+from base64 import b64decode
 from flask import Blueprint, jsonify, request
 
 from properties.seedwork.application.queries import execute_query
@@ -29,12 +30,17 @@ def register_ground():
 def get_ground(id=None):
     if not id:
         return jsonify({"message": "The ground ID is required"}), 400
-
+    
+    token = request.headers.get("Authorization")
+    if not token:
+        return jsonify({"message": "Missing authorization token"}), 401
+    
     query = GetGround(id=id)
     result = execute_query(query)
 
     if not result.data:
         return jsonify({"message": f"The ground with ID {id} does not exist"}), 400
 
+    role = b64decode(token.split()[1]).decode("utf-8")
     mapper = GroundMapperDTO()
-    return jsonify(mapper.dto_2_dict(result.data))
+    return jsonify(mapper.dto_2_dict(result.data, role))

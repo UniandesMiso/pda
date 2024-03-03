@@ -19,7 +19,7 @@ def create_app():
 
     init_db(app)
     init_api(app)
-    init_consumers()
+    # init_consumers()
 
     return app
 

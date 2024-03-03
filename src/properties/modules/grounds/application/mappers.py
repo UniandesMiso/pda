@@ -23,8 +23,12 @@ class GroundMapperDTO(ApplicationMapper):
         )
         return ground_dto
 
-    def dto_2_dict(self, dto: GroundDTO) -> dict:
-        return dto.__dict__
+    def dto_2_dict(self, dto: GroundDTO, role: str = "QUERY") -> dict:
+        ground_dict =  dto.__dict__
+        if role == "AGENCY":
+            ground_dict.pop("price")
+            ground_dict.pop("currency")
+        return ground_dict
 
 
 class GroundMapper(RepositoryMapper):

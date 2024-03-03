@@ -37,7 +37,6 @@ class GroundRepositorySQL(GroundRepository):
             session.commit()
             session.close()
 
-
     def get_by_id(self, id: UUID) -> Ground:
         ground_dto = db.session.query(GroundDTO).get(id)
         mapper = GroundMapper()
