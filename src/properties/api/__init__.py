@@ -7,7 +7,7 @@ from properties.config import config
 from properties.config.db import init_db
 from properties.api.grounds import bp as grounds_bp
 
-import properties.modules.grounds.infrastructure.consumers as grounds_consumer
+import properties.modules.grounds.infrastructure.consumers as grounds_consumers
 
 
 def create_app():
@@ -29,7 +29,8 @@ def init_api(app):
 
 
 def init_consumers():
-    Thread(target=grounds_consumer.subscribe_2_events).start()
+    Thread(target=grounds_consumers.subscribe_2_sales_events).start()
+    Thread(target=grounds_consumers.subscribe_2_information_events).start()
 
 
 def exception_handler(ex: HTTPException):

@@ -3,7 +3,7 @@ from datetime import datetime
 from dataclasses import dataclass, field
 
 from listings.seedwork.domain.events import DomainEvent
-from listings.seedwork.domain.value_objects import Amount
+from listings.seedwork.domain.value_objects import Property
 
 
 @dataclass
@@ -25,6 +25,5 @@ class Root(Entity):
 
 
 @dataclass
-class EstateList(Root):
-    property_id: str = field(default_factory=str)
-    amount: Amount = field(default_factory=Amount)
+class Listing(Root):
+    properties: list[Property] = field(default_factory=list[Property])

@@ -24,16 +24,12 @@ class GroundRepositorySQL(GroundRepository):
     def update(self, entity: Ground):
         engine = create_engine(get_database_url())
         with Session(engine) as session:
-            (session.query(GroundDTO)
-                .filter(GroundDTO.id == str(entity.id))
-                .update({
-                    "updated_at": datetime.now(),
-                    "width": entity.dimension.width,
-                    "length": entity.dimension.length,
-                    "price": entity.amount.price,
-                    "currency": entity.amount.currency,
-                }))
-
+            update = {"updated_at": datetime.now()}
+            if (entity.dimension.width): update.update(width=entity.dimension.width)
+            if (entity.dimension.length): update.update(length=entity.dimension.length)
+            if (entity.amount.price): update.update(price=entity.amount.price)
+            if (entity.amount.currency): update.update(currency=entity.amount.currency)
+            session.query(GroundDTO).filter(GroundDTO.id == str(entity.id)).update(update)
             session.commit()
             session.close()
 

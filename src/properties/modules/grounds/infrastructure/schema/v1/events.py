@@ -13,3 +13,13 @@ class SaleRegisteredPayload(Record):
 
 class SaleRegisteredEvent(IntegrationEvent):
     data = SaleRegisteredPayload()
+
+
+class PropertyProcessedPayload(Record):
+    property_id = String()
+    width = Float()
+    length = Float()
+
+
+class PropertyProcessedEvent(IntegrationEvent):
+    data = PropertyProcessedPayload()

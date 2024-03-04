@@ -8,5 +8,5 @@ ENV FLASK_CONFIG=production
 COPY . ./listings
 RUN pip install -r ./listings/requirements.txt
 
-EXPOSE 3001
-CMD ["flask", "-A", "./listings/api", "run", "-h", "0.0.0.0", "-p", "3001"]
+EXPOSE 3002
+CMD ["flask", "-A", "./listings/api", "run", "-h", "0.0.0.0", "-p", "3002"]

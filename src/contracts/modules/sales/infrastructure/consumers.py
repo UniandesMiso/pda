@@ -1,4 +1,4 @@
-from pulsar import Client, ConsumerType
+from pulsar import Client
 from pulsar.schema import AvroSchema
 
 from contracts.seedwork.infrastructure.utils import get_pulsar_url
@@ -9,8 +9,8 @@ def subscribe_2_events():
     client = Client(get_pulsar_url())
 
     consumer = client.subscribe(
-        topic="sales-events",
-        subscription_name="contracts-sales-sub",
+        topic="contracts-sales-events",
+        subscription_name="contracts-sales-sub-self",
         schema=AvroSchema(SaleRegisteredEvent),
     )
 

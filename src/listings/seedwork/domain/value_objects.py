@@ -6,6 +6,7 @@ class ValueObject: ...
 
 
 @dataclass(frozen=True)
-class Amount(ValueObject):
-    price: float = field(default_factory=float)
-    currency: str = field(default_factory=str)
+class Property(ValueObject):
+    id: str = field(default_factory=str)
+    width: float = field(default_factory=float)
+    length: float = field(default_factory=float)

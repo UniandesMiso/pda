@@ -8,7 +8,7 @@ class Command: ...
 
 @dataclass
 class CommandResult:
-    data: None
+    data: any
 
 
 class CommandHandler(ABC):

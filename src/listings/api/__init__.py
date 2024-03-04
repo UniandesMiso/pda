@@ -1,13 +1,10 @@
 from os import environ
-from threading import Thread
 from flask import Flask, jsonify
 from werkzeug.exceptions import HTTPException
 
 from listings.config import config
 from listings.config.db import init_db
 from listings.api.information import bp as listings_bp
-
-import listings.modules.listings.infrastructure.consumers as information_consumer
 
 
 def create_app():
@@ -19,17 +16,12 @@ def create_app():
 
     init_db(app)
     init_api(app)
-    init_consumers()
 
     return app
 
 
 def init_api(app):
     app.register_blueprint(listings_bp)
-
-
-def init_consumers():
-    Thread(target=information_consumer.subscribe_2_events).start()
 
 
 def exception_handler(ex: HTTPException):

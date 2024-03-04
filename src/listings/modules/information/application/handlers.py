@@ -7,6 +7,5 @@ class InformationHandler(Handler):
 
     @staticmethod
     def handle_property_processed(event):
-        print(event)
-        # dispatcher = Dispatcher()
-        # dispatcher.send_event("listing-events", event)
+        dispatcher = Dispatcher()
+        dispatcher.send_event("listing-information-events", event)

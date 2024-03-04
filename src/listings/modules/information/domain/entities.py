@@ -1,21 +1,18 @@
-from datetime import datetime
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
-from listings.seedwork.domain.entities import Contract
+from listings.seedwork.domain.entities import Listing
 from listings.seedwork.domain.mixins import ValidateRules
 from listings.modules.information.domain.events import PropertyProcessed
 
 
 @dataclass
-class Listing(Contract, ValidateRules):
-    executed_at: datetime = field(default=datetime.now())
+class GenericListing(Listing, ValidateRules):
 
-    def process_listing(self):
+    def process_properties(self):
         for property in self.properties:
             event = PropertyProcessed(
                 property_id=property.id,
                 width=property.width,
                 length=property.length,
-                executed_at=self.executed_at,
             )
             self.add_event(event)
