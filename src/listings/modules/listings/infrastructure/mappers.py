@@ -1,10 +1,10 @@
-from contracts.seedwork.domain.repositories import Mapper
-from contracts.seedwork.domain.entities import Amount
-from contracts.modules.sales.domain.entities import Sale
-from contracts.modules.sales.infrastructure.dto import Sale as SaleDTO
+from listings.seedwork.domain.repositories import Mapper
+from listings.seedwork.domain.entities import Amount
+from listings.modules.information.domain.entities import Sale
+from listings.modules.information.infrastructure.dto import Sale as SaleDTO
 
 
-class SaleMapper(Mapper):
+class InformationMapper(Mapper):
 
     def get_type(self) -> type:
         return Sale.__class__

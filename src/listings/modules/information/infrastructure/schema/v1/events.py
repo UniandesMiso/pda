@@ -1,6 +1,6 @@
 from pulsar.schema import Record, String, Float, Integer
 
-from contracts.seedwork.infrastructure.schema.v1.events import IntegrationEvent
+from listings.seedwork.infrastructure.schema.v1.events import IntegrationEvent
 
 
 class SaleRegisteredPayload(Record):

@@ -1,5 +1,5 @@
-from contracts.seedwork.application.queries import QueryHandler
-from contracts.modules.sales.infrastructure.repositories import SaleRepositoryGeneric
+from listings.seedwork.application.queries import QueryHandler
+from listings.modules.information.infrastructure.repositories import SaleRepositoryGeneric
 
 
 class BaseQueryHandler(QueryHandler):

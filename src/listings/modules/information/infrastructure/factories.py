@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
-from contracts.seedwork.domain.events import DomainEvent
-from contracts.seedwork.domain.factories import Factory
-from contracts.seedwork.domain.exceptions import FactoryException
-from contracts.seedwork.infrastructure.schema.v1.events import IntegrationEvent
-from contracts.modules.sales.domain.events import SaleRegistered
-from contracts.modules.sales.infrastructure.schema.v1.events import SaleRegisteredPayload, SaleRegisteredEvent
+from listings.seedwork.domain.events import DomainEvent
+from listings.seedwork.domain.factories import Factory
+from listings.seedwork.domain.exceptions import FactoryException
+from listings.seedwork.infrastructure.schema.v1.events import IntegrationEvent
+from listings.modules.information.domain.events import SaleRegistered
+from listings.modules.information.infrastructure.schema.v1.events import SaleRegisteredPayload, SaleRegisteredEvent
 
 
 @dataclass

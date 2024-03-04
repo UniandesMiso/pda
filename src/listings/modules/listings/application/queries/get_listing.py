@@ -1,8 +1,7 @@
 from dataclasses import dataclass
 
-from contracts.seedwork.application.queries import Query, QueryResult, execute_query as query
-from contracts.modules.sales.application.mappers import SaleMapper
-from contracts.modules.sales.application.queries.base import BaseQueryHandler
+from listings.seedwork.application.queries import Query, QueryResult, execute_query as query
+from listings.modules.information.application.mappers import InformationMapper
 
 
 @dataclass
@@ -14,7 +13,7 @@ class GetListingHandler(BaseQueryHandler):
 
     def handle(self, query: GetListing) -> QueryResult:
         sale = self.repository.get_by_id(query.id)
-        mapper = SaleMapper()
+        mapper = InformationMapper()
         return QueryResult(data=mapper.entity_2_dto(sale))
 
 

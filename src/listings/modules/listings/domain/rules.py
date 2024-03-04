@@ -1,5 +1,5 @@
-from contracts.seedwork.domain.rules import BusinessRule
-from contracts.modules.sales.domain.entities import Sale
+from listings.seedwork.domain.rules import BusinessRule
+from listings.modules.information.domain.entities import Sale
 
 
 class PriceRequired(BusinessRule):

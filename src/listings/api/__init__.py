@@ -7,7 +7,7 @@ from listings.config import config
 from listings.config.db import init_db
 from listings.api.information import bp as listings_bp
 
-import listings.modules.listings.infrastructure.consumers as sales_consumer
+import listings.modules.listings.infrastructure.consumers as information_consumer
 
 
 def create_app():
@@ -29,7 +29,7 @@ def init_api(app):
 
 
 def init_consumers():
-    Thread(target=sales_consumer.subscribe_2_events).start()
+    Thread(target=information_consumer.subscribe_2_events).start()
 
 
 def exception_handler(ex: HTTPException):
