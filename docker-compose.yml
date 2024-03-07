@@ -16,6 +16,7 @@ services:
     restart: on-failure
     environment:
       - metadataStoreUrl=zk:zookeeper:2181
+      - PULSAR_MEM=-Xms256m -Xmx256m -XX:MaxDirectMemorySize=256m
     networks:
       - pulsar
     volumes:
@@ -83,11 +84,12 @@ services:
       - managedLedgerDefaultAckQuorum=1
       - advertisedAddress=broker
       - advertisedListeners=external:pulsar://broker:6650
+      - PULSAR_MEM=-Xms512m -Xmx512m -XX:MaxDirectMemorySize=256m
     networks:
       - pulsar
     ports:
-      - 6650:6650
-      - 8080:8080
+      - '6650:6650'
+      - '8080:8080'
     command: bash -c "bin/apply-config-from-env.py conf/broker.conf && exec bin/pulsar broker"
     depends_on:
       zookeeper:
