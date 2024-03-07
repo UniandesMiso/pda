@@ -18,6 +18,8 @@ services:
       - metadataStoreUrl=zk:zookeeper:2181
     networks:
       - pulsar
+    volumes:
+      - ./data/zookeeper:/pulsar/data/zookeeper
     command: >
       bash -c "bin/apply-config-from-env.py conf/zookeeper.conf && \
              bin/generate-zookeeper-config.sh conf/zookeeper.conf && \
@@ -58,6 +60,8 @@ services:
       - BOOKIE_MEM=-Xms512m -Xmx512m -XX:MaxDirectMemorySize=256m
     networks:
       - pulsar
+    volumes:
+      - ./data/bookkeeper:/pulsar/data/bookkeeper
     command: bash -c "bin/apply-config-from-env.py conf/bookkeeper.conf && exec bin/pulsar bookie"
     depends_on:
       zookeeper:
@@ -197,7 +201,6 @@ services:
       LISTINGS_PORT: 3002
     networks:
       - app
-      - pulsar
     ports:
       - '8000:8000'
     depends_on:
