@@ -181,3 +181,25 @@ services:
     depends_on:
       db:
         condition: service_healthy
+
+  bff:
+    profiles: ['bff']
+    container_name: bff
+    image: bff
+    build: ./src/bff
+    restart: on-failure
+    environment:
+      PROPERTIES_HOST: properties
+      PROPERTIES_PORT: 3000
+      CONTRACTS_HOST: contracts
+      CONTRACTS_PORT: 3001
+      LISTINGS_HOST: listings
+      LISTINGS_PORT: 3002
+    networks:
+      - app
+      - pulsar
+    ports:
+      - '8000:8000'
+    depends_on:
+      db:
+        condition: service_healthy
