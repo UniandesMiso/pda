@@ -33,7 +33,6 @@ class RegisterSaleHandler(BaseCommandHandler):
 
         sale.register_sale()
         self.repository.create(sale)
-        db.session.commit()
 
         for event in sale.events:
             dispatcher.send(event=event, signal=type(event).__name__)
