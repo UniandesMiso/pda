@@ -16,3 +16,16 @@ class SaleRegistered(DomainEvent):
     price: float = field(default_factory=float)
     currency: str = field(default_factory=str)
     executed_at: datetime = field(default_factory=datetime)
+
+
+@dataclass
+class SaleRegisterFailed(DomainEvent):
+
+    def get_type(self):
+        return SaleRegisterFailed.__class__
+
+    sale_id: UUID = field(default_factory=UUID)
+    property_id: str = field(default_factory=str)
+    price: float = field(default_factory=float)
+    currency: str = field(default_factory=str)
+    executed_at: datetime = field(default_factory=datetime)

@@ -42,8 +42,8 @@ services:
                --cluster cluster-a \
                --zookeeper zookeeper:2181 \
                --configuration-store zookeeper:2181 \
-               --web-service-url http://broker:8080 \
-               --broker-service-url pulsar://broker:6650
+               --web-service-url http://127.0.0.1:8080 \
+               --broker-service-url pulsar://127.0.0.1:6650
     depends_on:
       zookeeper:
         condition: service_healthy
@@ -83,7 +83,7 @@ services:
       - managedLedgerDefaultWriteQuorum=1
       - managedLedgerDefaultAckQuorum=1
       - advertisedAddress=broker
-      - advertisedListeners=external:pulsar://broker:6650
+      - advertisedListeners=external:pulsar://127.0.0.1:6650
       - PULSAR_MEM=-Xms512m -Xmx512m -XX:MaxDirectMemorySize=256m
     networks:
       - pulsar
@@ -120,7 +120,7 @@ services:
       - broker
 
   properties:
-    profiles: ['properties']
+    profiles: ['properties', 'services']
     container_name: properties
     image: properties
     build: ./src/properties
@@ -143,7 +143,7 @@ services:
         condition: service_healthy
 
   contracts:
-    profiles: ['contracts']
+    profiles: ['contracts', 'services']
     container_name: contracts
     image: contracts
     build: ./src/contracts
@@ -166,7 +166,7 @@ services:
         condition: service_healthy
 
   listings:
-    profiles: ['listings']
+    profiles: ['listings', 'services']
     container_name: listings
     image: listings
     build: ./src/listings
@@ -189,7 +189,7 @@ services:
         condition: service_healthy
 
   bff:
-    profiles: ['bff']
+    profiles: ['bff', 'services']
     container_name: bff
     image: bff
     build: ./src/bff

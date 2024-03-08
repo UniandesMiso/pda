@@ -24,3 +24,7 @@ class SaleRepositoryGeneric(SaleRepository):
         mapper = SaleMapper()
         sale = mapper.dto_2_entity(sale_dto)
         return sale
+    
+    def delete(self, id: UUID):
+        sale_dto = db.session.query(SaleDTO).get(id)
+        db.session.delete(sale_dto)

@@ -40,10 +40,10 @@ input ReadGroundInput {
 input CreateGroundInput {
   address: String!
   location: String!
-  width: Float
-  length: Float
-  price: Float
-  currency: String
+}
+
+type CreateGroundResponse {
+  message: String!
 }
 
 input CreateSaleInput {
@@ -51,6 +51,10 @@ input CreateSaleInput {
   price: Float!
   currency: String!
   executedAt: String!
+}
+
+type CreateSaleResponse {
+  message: String!
 }
 
 input PropertyInput {
@@ -68,8 +72,8 @@ type Query {
 }
 
 type Mutation {
-  createGround(input: CreateGroundInput): Ground
-  createSale(input: CreateSaleInput): Sale
+  createGround(input: CreateGroundInput): CreateGroundResponse
+  createSale(input: CreateSaleInput): CreateSaleResponse
   processListing(input: ProcessListingInput): Listing
 }
 

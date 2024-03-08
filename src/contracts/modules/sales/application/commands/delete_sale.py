@@ -1,0 +1,24 @@
+from dataclasses import dataclass
+
+from contracts.config.db import db
+from contracts.seedwork.application.commands import Command, CommandResult, execute_command as command
+from contracts.modules.sales.application.commands.base import BaseCommandHandler
+
+
+@dataclass
+class DeleteSale(Command):
+    sale_id: str
+
+
+class DeleteSaleHandler(BaseCommandHandler):
+
+    def handle(self, command: DeleteSale) -> CommandResult:
+        self.repository.delete(command.id)
+        db.session.commit()
+        return CommandResult(data=None)
+
+
+@command.register(DeleteSale)
+def execute_register_sale(command: DeleteSale):
+    handler = DeleteSaleHandler()
+    return handler.handle(command)
