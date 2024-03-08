@@ -91,3 +91,6 @@ data/
 
 # Vs Code
 .vscode/
+
+# Pycharm
+*.idea/*
