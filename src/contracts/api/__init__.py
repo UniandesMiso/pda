@@ -19,7 +19,7 @@ def create_app():
 
     init_db(app)
     init_api(app)
-    init_consumers()
+    init_consumers(app)
 
     return app
 
@@ -28,8 +28,8 @@ def init_api(app):
     app.register_blueprint(sales_bp)
 
 
-def init_consumers():
-    Thread(target=sales_consumer.subscribe_2_events).start()
+def init_consumers(app):
+    Thread(target=sales_consumer.subscribe_2_events, args=[app]).start()
 
 
 def exception_handler(ex: HTTPException):
