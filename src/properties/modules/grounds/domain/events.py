@@ -1,7 +1,6 @@
-from uuid import UUID
 from dataclasses import dataclass, field
 
-from contracts.seedwork.domain.events import DomainEvent
+from properties.seedwork.domain.events import DomainEvent
 
 
 @dataclass

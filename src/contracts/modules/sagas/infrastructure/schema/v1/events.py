@@ -1,6 +1,6 @@
 from pulsar.schema import Record, String, Float
 
-from properties.seedwork.infrastructure.schema.v1.events import IntegrationEvent
+from contracts.seedwork.infrastructure.schema.v1.events import IntegrationEvent
 
 
 class AmountUpdatedPayload(Record):
