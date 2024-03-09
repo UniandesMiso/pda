@@ -16,6 +16,7 @@ class GroundRepositorySQL(GroundRepository):
         mapper = GroundMapper()
         ground_dto = mapper.entity_2_dto(entity)
         db.session.add(ground_dto)
+        db.session.commit()
 
     def update(self, entity: Ground):
         values = {"updated_at": datetime.now()}

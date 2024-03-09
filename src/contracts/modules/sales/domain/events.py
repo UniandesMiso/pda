@@ -11,7 +11,7 @@ class SaleRegistered(DomainEvent):
     def get_type(self):
         return SaleRegistered.__class__
 
-    sale_id: UUID = field(default_factory=UUID)
+    sale_id: str = field(default_factory=str)
     property_id: str = field(default_factory=str)
     price: float = field(default_factory=float)
     currency: str = field(default_factory=str)
@@ -24,7 +24,7 @@ class SaleRegisterFailed(DomainEvent):
     def get_type(self):
         return SaleRegisterFailed.__class__
 
-    sale_id: UUID = field(default_factory=UUID)
+    sale_id: str = field(default_factory=str)
     property_id: str = field(default_factory=str)
     price: float = field(default_factory=float)
     currency: str = field(default_factory=str)

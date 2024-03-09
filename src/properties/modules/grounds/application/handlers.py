@@ -8,3 +8,8 @@ class GroundsHandler(Handler):
     def handle_amount_updated(event):
         dispatcher = Dispatcher()
         dispatcher.send_event("grounds-events", event)
+
+    @staticmethod
+    def handle_amount_update_failed(event):
+        dispatcher = Dispatcher()
+        dispatcher.send_event("grounds-events-errors", event)

@@ -2,7 +2,6 @@ from uuid import uuid4
 from dataclasses import dataclass
 from pydispatch import dispatcher
 
-from contracts.config.db import db
 from contracts.seedwork.application.commands import Command, CommandResult, execute_command as command
 from contracts.modules.sales.application.dto import SaleDTO
 from contracts.modules.sales.application.mappers import SaleMapper

@@ -13,7 +13,8 @@ class RegisterGroundCommand(IntegrationCommand):
 
 
 class UpdateAmountPayload(IntegrationCommand):
-    ground_id = String()
+    propertyId = String()
+    saleId = String()
     price = Float()
     currency = String()
 

@@ -7,9 +7,10 @@ from properties.modules.grounds.domain.events import AmountUpdated
 @dataclass
 class Ground(Property):
 
-    def update_amount(self):
+    def update_amount(self, sale_id):
         event = AmountUpdated(
-            ground_id=self.id,
+            property_id=self.id,
+            sale_id=sale_id,
             price=self.amount.price,
             currency=self.amount.currency,
         )

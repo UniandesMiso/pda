@@ -6,7 +6,7 @@ from contracts.modules.sales.application.commands.base import BaseCommandHandler
 
 @dataclass
 class DeleteSale(Command):
-    sale_id: str
+    id: str
 
 
 class DeleteSaleHandler(BaseCommandHandler):

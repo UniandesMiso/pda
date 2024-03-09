@@ -26,8 +26,6 @@ class RegisterGroundHandler(BaseCommandHandler):
         ground = mapper.dto_2_entity(ground_dto)
 
         self.repository.create(ground)
-        db.session.commit()
-
         return CommandResult(data=mapper.entity_2_dto(ground))
 
 

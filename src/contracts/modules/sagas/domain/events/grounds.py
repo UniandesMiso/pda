@@ -1,4 +1,3 @@
-from uuid import UUID
 from dataclasses import dataclass
 
 from contracts.seedwork.domain.events import DomainEvent
@@ -9,15 +8,23 @@ class GroundEvent(DomainEvent): ...
 
 @dataclass
 class AmountUpdated(GroundEvent):
-    property_id: UUID
-    sale_id: str
-    price: float
-    currency: str
+
+    def get_type(self):
+        return AmountUpdated.__class__
+
+    property_id: str = None
+    sale_id: str = None
+    price: float = None
+    currency: str = None
 
 
 @dataclass
 class AmountUpdateFailed(GroundEvent):
-    property_id: UUID
-    sale_id: str
-    price: float
-    currency: str
+
+    def get_type(self):
+        return AmountUpdateFailed.__class__
+    
+    property_id: str = None
+    sale_id: str = None
+    price: float = None
+    currency: str = None

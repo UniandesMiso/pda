@@ -49,7 +49,8 @@ def subscribe_2_update_amount_command(app):
             command = message.value()
             with app.app_context():
                 command = UpdateAmount(
-                    id=command.data.ground_id,
+                    property_id=command.data.propertyId,
+                    sale_id=command.data.saleId,
                     price=command.data.price,
                     currency=command.data.currency,
                 )

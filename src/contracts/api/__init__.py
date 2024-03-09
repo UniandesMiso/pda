@@ -8,6 +8,7 @@ from contracts.config.db import init_db
 from contracts.api.sales import bp as sales_bp
 
 import contracts.modules.sales.infrastructure.consumers as sales_consumers
+import contracts.modules.sagas.infrastructure.consumers as sagas_consumers
 
 
 def create_app():
@@ -30,6 +31,8 @@ def init_api(app):
 
 def init_consumers(app):
     Thread(target=sales_consumers.subscribe_2_register_sale_command, args=[app]).start()
+    Thread(target=sagas_consumers.subscribe_2_ground_events, args=[app]).start()
+    Thread(target=sagas_consumers.subscribe_2_ground_errors_events, args=[app]).start()
 
 
 def exception_handler(ex: HTTPException):
