@@ -195,6 +195,8 @@ services:
     build: ./src/bff
     restart: on-failure
     environment:
+      BROKER_HOST: broker
+      BROKER_PORT: 6650
       PROPERTIES_HOST: properties
       PROPERTIES_PORT: 3000
       CONTRACTS_HOST: contracts
@@ -203,6 +205,7 @@ services:
       LISTINGS_PORT: 3002
     networks:
       - app
+      - pulsar
     ports:
       - '8000:8000'
     depends_on:
