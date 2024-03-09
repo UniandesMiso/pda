@@ -24,6 +24,7 @@ class GroundRepositorySQL(GroundRepository):
         if (entity.amount.price): values.update(price=entity.amount.price)
         if (entity.amount.currency): values.update(currency=entity.amount.currency)
         db.session.query(GroundDTO).filter(GroundDTO.id == str(entity.id)).update(values)
+        db.session.commit()
 
     def get_by_id(self, id: UUID) -> Ground:
         ground_dto = db.session.query(GroundDTO).get(id)

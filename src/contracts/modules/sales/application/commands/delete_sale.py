@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-from contracts.config.db import db
 from contracts.seedwork.application.commands import Command, CommandResult, execute_command as command
 from contracts.modules.sales.application.commands.base import BaseCommandHandler
 
@@ -14,7 +13,6 @@ class DeleteSaleHandler(BaseCommandHandler):
 
     def handle(self, command: DeleteSale) -> CommandResult:
         self.repository.delete(command.id)
-        db.session.commit()
         return CommandResult(data=None)
 
 

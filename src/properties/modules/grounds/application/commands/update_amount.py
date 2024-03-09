@@ -29,7 +29,6 @@ class UpdateAmountHandler(BaseCommandHandler):
 
         ground.update_amount()
         self.repository.update(ground)
-        db.session.commit()
 
         for event in ground.events:
             dispatcher.send(event=event, signal=type(event).__name__)
