@@ -18,9 +18,15 @@ class SaleRepositoryGeneric(SaleRepository):
         mapper = SaleMapper()
         sale_dto = mapper.entity_2_dto(entity)
         db.session.add(sale_dto)
+        db.session.commit()
 
     def get_by_id(self, id: UUID) -> Sale:
         sale_dto = db.session.query(SaleDTO).get(id)
         mapper = SaleMapper()
         sale = mapper.dto_2_entity(sale_dto)
         return sale
+    
+    def delete(self, id: UUID):
+        sale_dto = db.session.query(SaleDTO).get(id)
+        db.session.delete(sale_dto)
+        db.session.commit()

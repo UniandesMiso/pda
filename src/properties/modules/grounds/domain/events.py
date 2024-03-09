@@ -1,18 +1,27 @@
-from uuid import UUID
-from datetime import datetime
 from dataclasses import dataclass, field
 
-from contracts.seedwork.domain.events import DomainEvent
+from properties.seedwork.domain.events import DomainEvent
 
 
 @dataclass
-class SaleRegistered(DomainEvent):
+class AmountUpdated(DomainEvent):
 
     def get_type(self):
-        return SaleRegistered.__class__
+        return AmountUpdated.__class__
 
-    sale_id: UUID = field(default_factory=UUID)
     property_id: str = field(default_factory=str)
+    sale_id: str = field(default_factory=str)
     price: float = field(default_factory=float)
     currency: str = field(default_factory=str)
-    executed_at: datetime = field(default_factory=datetime)
+
+
+@dataclass
+class AmountUpdateFailed(DomainEvent):
+
+    def get_type(self):
+        return AmountUpdateFailed.__class__
+
+    property_id: str = field(default_factory=str)
+    sale_id: str = field(default_factory=str)
+    price: float = field(default_factory=float)
+    currency: str = field(default_factory=str)

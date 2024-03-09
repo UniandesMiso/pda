@@ -12,7 +12,7 @@ class Sale(Contract, ValidateRules):
 
     def register_sale(self):
         event = SaleRegistered(
-            sale_id=self.id,
+            sale_id=str(self.id),
             property_id=self.property_id,
             price=self.amount.price,
             currency=self.amount.currency,

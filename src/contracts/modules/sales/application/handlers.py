@@ -1,11 +1,10 @@
 from contracts.seedwork.application.handlers import Handler
 
-from contracts.modules.sales.infrastructure.dispatchers import Dispatcher
+from contracts.modules.sagas.application.coordinators.sales_saga import listen_event
 
 
 class SalesHandler(Handler):
 
     @staticmethod
     def handle_sale_registered(event):
-        dispatcher = Dispatcher()
-        dispatcher.send_event("contracts-sales-events", event)
+        listen_event(event)

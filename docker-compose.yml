@@ -120,7 +120,7 @@ services:
       - broker
 
   properties:
-    profiles: ['properties']
+    profiles: ['properties', 'services']
     container_name: properties
     image: properties
     build: ./src/properties
@@ -143,7 +143,7 @@ services:
         condition: service_healthy
 
   contracts:
-    profiles: ['contracts']
+    profiles: ['contracts', 'services']
     container_name: contracts
     image: contracts
     build: ./src/contracts
@@ -166,7 +166,7 @@ services:
         condition: service_healthy
 
   listings:
-    profiles: ['listings']
+    profiles: ['listings', 'services']
     container_name: listings
     image: listings
     build: ./src/listings
@@ -189,12 +189,14 @@ services:
         condition: service_healthy
 
   bff:
-    profiles: ['bff']
+    profiles: ['bff', 'services']
     container_name: bff
     image: bff
     build: ./src/bff
     restart: on-failure
     environment:
+      BROKER_HOST: broker
+      BROKER_PORT: 6650
       PROPERTIES_HOST: properties
       PROPERTIES_PORT: 3000
       CONTRACTS_HOST: contracts
@@ -203,6 +205,7 @@ services:
       LISTINGS_PORT: 3002
     networks:
       - app
+      - pulsar
     ports:
       - '8000:8000'
     depends_on:

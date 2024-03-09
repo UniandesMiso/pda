@@ -19,7 +19,7 @@ def create_app():
 
     init_db(app)
     init_api(app)
-    init_consumers()
+    init_consumers(app)
 
     return app
 
@@ -28,9 +28,9 @@ def init_api(app):
     app.register_blueprint(grounds_bp)
 
 
-def init_consumers():
-    Thread(target=grounds_consumers.subscribe_2_sales_events).start()
-    Thread(target=grounds_consumers.subscribe_2_information_events).start()
+def init_consumers(app):
+    Thread(target=grounds_consumers.subscribe_2_register_ground_command, args=[app]).start()
+    Thread(target=grounds_consumers.subscribe_2_update_amount_command, args=[app]).start()
 
 
 def exception_handler(ex: HTTPException):
