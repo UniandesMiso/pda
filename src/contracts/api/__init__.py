@@ -5,6 +5,7 @@ from werkzeug.exceptions import HTTPException
 
 from contracts.config import config
 from contracts.config.db import init_db
+from contracts.api.ping import bp as ping_bp
 from contracts.api.sales import bp as sales_bp
 
 import contracts.modules.sales.infrastructure.consumers as sales_consumers
@@ -20,12 +21,13 @@ def create_app():
 
     init_db(app)
     init_api(app)
-    init_consumers(app)
+    # init_consumers(app)
 
     return app
 
 
 def init_api(app):
+    app.register_blueprint(ping_bp)
     app.register_blueprint(sales_bp)
 
 

@@ -4,6 +4,7 @@ from werkzeug.exceptions import HTTPException
 
 from listings.config import config
 from listings.config.db import init_db
+from contracts.api.ping import bp as ping_bp
 from listings.api.information import bp as listings_bp
 
 
@@ -21,6 +22,7 @@ def create_app():
 
 
 def init_api(app):
+    app.register_blueprint(ping_bp)
     app.register_blueprint(listings_bp)
 
 

@@ -23,6 +23,11 @@ schema = make_executable_schema(type_defs, query, mutation)
 explorer_html = ExplorerGraphiQL().html(None)
 
 
+@bp.route("/ping", methods=["GET"])
+def register_sale():
+    return jsonify({"message": "pong"})
+
+
 @bp.route("/graphql", methods=["GET"])
 def graphql_playground():
     return explorer_html, 200

@@ -5,6 +5,7 @@ from werkzeug.exceptions import HTTPException
 
 from properties.config import config
 from properties.config.db import init_db
+from contracts.api.ping import bp as ping_bp
 from properties.api.grounds import bp as grounds_bp
 
 import properties.modules.grounds.infrastructure.consumers as grounds_consumers
@@ -25,6 +26,7 @@ def create_app():
 
 
 def init_api(app):
+    app.register_blueprint(ping_bp)
     app.register_blueprint(grounds_bp)
 
 
